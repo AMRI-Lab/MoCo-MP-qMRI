@@ -6,7 +6,7 @@ We proposed a generalizable framework that integrates rapid navigator-based moti
 ## Setup
 1. Python 3.10.11
 2. PyTorch 2.0.0
-3. h5py, scipy, numpy, nibabel, tqdm
+3. h5py, sklearn, scipy, numpy, nibabel, tqdm
 4. [tiny-cuda-nn](https://github.com/NVlabs/tiny-cuda-nn)
 
 ## Files Description
@@ -43,4 +43,4 @@ Data/
 ## Usage
 You can run "run_demo.py" to test the performance of motion correction.
 
-Data for running the demo are available at [Google Drive](https://drive.google.com/drive/folders/1ih0OpCivzbg6NosKBKepkdnCvSn5PJ1Z?usp=sharing)
+Data for running the demo are available at [Google Drive](https://drive.google.com/drive/folders/19w0QbGXJVZzhvEXs4kOyVMs-FcCgYDWR?usp=sharing)
