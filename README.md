@@ -5,7 +5,7 @@ We proposed a generalizable framework that integrates rapid navigator-based moti
 
 ## Setup
 1. Python 3.10.11
-2. PyTorch 2.0.0
+2. PyTorch 2.4.1
 3. h5py, sklearn, scipy, numpy, nibabel, tqdm
 4. [tiny-cuda-nn](https://github.com/NVlabs/tiny-cuda-nn)
 
