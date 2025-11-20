@@ -13,12 +13,12 @@ We proposed a generalizable framework that integrates rapid navigator-based moti
 ```plaintext
 SUMMIT/
 ├── run_demo.py              # Script for running the demo
-├── model.pyc                # SUMMIT model
+├── model.pyc                # MoCo model
 ├── utils.pyc                # Supporting functions
 ├── README.md                # README file
 
 Data/
-├── rawdata.h5                 # Undersampled k-space data
+├── rawdata.h5                 # Corrupted k-space data
 ├── imagedata_mask.mat         # Sampling mask
 ├── encTable.mat               # Sequential encoding table
 ├── estimate_motion_params.mat # Estimated motion parameters
