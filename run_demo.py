@@ -35,20 +35,20 @@ def get_device(cuda_idx: int = 0) -> torch.device:
         device = torch.device(f'cuda:{cuda_idx}')
     else:
         device = torch.device('cpu')
-    print(f"Using device: {device}")
+    print(f'Using device: {device}')
     return device
 
 def load_raw_kspace(filepath: str) -> torch.Tensor:
     """Load raw k-space from .h5 file."""
-    with h5py.File(filepath, "r") as f:
-        data = f["rawdata"][:]
+    with h5py.File(filepath, 'r') as f:
+        data = f['rawdata'][:]
     data = torch.tensor(data, dtype=torch.complex64)
     return data
 
 def load_mask(filepath: str, device: torch.device) -> torch.Tensor:
     """Load k-space mask from .mat file and format it."""
-    with h5py.File(filepath, "r") as f:
-        mask = f["imagedata_mask"][:]
+    with h5py.File(filepath, 'r') as f:
+        mask = f['imagedata_mask'][:]
 
     mask = mask[..., 0].astype(bool)
     mask = torch.tensor(mask, dtype=torch.bool, device=device)
@@ -59,8 +59,8 @@ def load_mask(filepath: str, device: torch.device) -> torch.Tensor:
 
 def load_enc_table(filepath: str) -> np.ndarray:
     """Load encoding table."""
-    with h5py.File(filepath, "r") as f:
-        enc_table = f["encTable"][:]
+    with h5py.File(filepath, 'r') as f:
+        enc_table = f['encTable'][:]
     return enc_table
 
 def build_arg_parser():
@@ -91,26 +91,26 @@ def save_results(mat_dir: str, nii_dir: str, voxel_size, A, T1, T2, T2star, phi,
     os.makedirs(nii_dir, exist_ok=True)
 
     to_save = {
-        "pre_A.mat": A,
-        "pre_T1.mat": T1,
-        "pre_T2.mat": T2,
-        "pre_T2star.mat": T2star,
-        "pre_phi.mat": phi,
-        "pre_csm.mat": csm,
+        'pre_A.mat': A,
+        'pre_T1.mat': T1,
+        'pre_T2.mat': T2,
+        'pre_T2star.mat': T2star,
+        'pre_phi.mat': phi,
+        'pre_csm.mat': csm,
     }
 
     for name, val in to_save.items():
         savemat(os.path.join(mat_dir, name), {name[:-4]: val})
 
     # NIfTI results
-    save_nii(A, os.path.join(nii_dir, "pre_A.nii"), voxel_size)
-    save_nii(T1, os.path.join(nii_dir, "pre_T1.nii"), voxel_size)
-    save_nii(T2, os.path.join(nii_dir, "pre_T2.nii"), voxel_size)
-    save_nii(T2star, os.path.join(nii_dir, "pre_T2star.nii"), voxel_size)
-    save_nii(phi, os.path.join(nii_dir, "pre_phi.nii"), voxel_size)
-    save_nii(np.abs(csm), os.path.join(nii_dir, "pre_csm_mag.nii"), voxel_size)
+    save_nii(A, os.path.join(nii_dir, 'pre_A.nii'), voxel_size)
+    save_nii(T1, os.path.join(nii_dir, 'pre_T1.nii'), voxel_size)
+    save_nii(T2, os.path.join(nii_dir, 'pre_T2.nii'), voxel_size)
+    save_nii(T2star, os.path.join(nii_dir, 'pre_T2star.nii'), voxel_size)
+    save_nii(phi, os.path.join(nii_dir, 'pre_phi.nii'), voxel_size)
+    save_nii(np.abs(csm), os.path.join(nii_dir, 'pre_csm_mag.nii'), voxel_size)
 
-    print("Results saved.")
+    print('Results saved.')
 
 def save_nii(arr, path, voxel_size=[1,1,1]):
     affine=np.array([[voxel_size[0],0,0,0],
@@ -127,18 +127,18 @@ def main():
     set_random_seed(args.seed)
     device = get_device(args.cuda_idx)
 
-    data_root = "/home/gylao/lab/MultiContrast/src/Motion/demo_code_MoCo-MP-qMRI/data"
-    raw_ksp_path = os.path.join(data_root, "rawdata.h5")
-    mask_path = os.path.join(data_root, "imagedata_mask.mat")
-    enc_table_path = os.path.join(data_root, "encTable.mat")
-    motion_path = os.path.join(data_root, "estimate_motion_params.mat")
+    data_root = './data'
+    raw_ksp_path = os.path.join(data_root, 'rawdata.h5')
+    mask_path = os.path.join(data_root, 'imagedata_mask.mat')
+    enc_table_path = os.path.join(data_root, 'encTable.mat')
+    motion_path = os.path.join(data_root, 'estimate_motion_params.mat')
 
     # Load Data
     ksp = load_raw_kspace(raw_ksp_path)
     ksp_mask = load_mask(mask_path, device)
     enc_table = load_enc_table(enc_table_path)
 
-    motion_params = loadmat(motion_path)["estimate_motion_params"]
+    motion_params = loadmat(motion_path)['estimate_motion_params']
     best_k, grouped_motion_params, motion_index = Motion_Cluster(motion_params, max_cluster=10)
 
     # Imaging parameters
@@ -159,7 +159,7 @@ def main():
     pre_A, pre_T1, pre_T2, pre_T2star, pre_phi, csm = model.Recon()
 
     # Save outputs
-    out_root = os.path.join(data_root, 'test_demo')
+    out_root = os.path.join(data_root, 'recon')
     save_results(
         os.path.join(out_root, 'mat'),
         os.path.join(out_root, 'nii'),
