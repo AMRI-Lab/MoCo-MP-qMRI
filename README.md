@@ -11,7 +11,7 @@ We proposed a generalizable framework that integrates rapid navigator-based moti
 
 ## Files Description
 ```plaintext
-SUMMIT/
+Script/
 ├── run_demo.py              # Script for running the demo
 ├── model.so                 # MoCo model
 ├── utils.so                 # Supporting functions
