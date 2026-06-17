@@ -29,15 +29,15 @@ Data/
 │   ├── gt_T2star.nii           # Ground truth of T2star map
 │   ├── gt_phi.nii              # Ground truth of phase map
 ├── recon/
-│   ├── recon_T1.nii            # Motion-corrected Reconstruction of T1 map
-│   ├── recon_T2.nii            # Motion-corrected Reconstruction of T2 map
-│   ├── recon_T2star.nii        # Motion-corrected Reconstruction of T2star map
-│   ├── recon_phi.nii           # Motion-corrected Reconstruction of phase map
+│   ├── recon_T1.nii            # Motion-corrected reconstruction of T1 map
+│   ├── recon_T2.nii            # Motion-corrected reconstruction of T2 map
+│   ├── recon_T2star.nii        # Motion-corrected reconstruction of T2star map
+│   ├── recon_phi.nii           # Motion-corrected reconstruction of phase map
 ├── corrupted/
-│   ├── corrupted_T1.nii        # Motion-corrupted Reconstruction of T1 map
-│   ├── corrupted_T2.nii        # Motion-corrupted Reconstruction of T2 map
-│   ├── corrupted_T2star.nii    # Motion-corrupted Reconstruction of T2star map
-│   ├── corrupted_phi.nii       # Motion-corrupted Reconstruction of phase map
+│   ├── corrupted_T1.nii        # Non-motion-corrected reconstruction of T1 map
+│   ├── corrupted_T2.nii        # Non-motion-corrected reconstruction of T2 map
+│   ├── corrupted_T2star.nii    # Non-motion-corrected reconstruction of T2star map
+│   ├── corrupted_phi.nii       # Non-motion-corrected reconstruction of phase map
 ```
 
 ## Usage
