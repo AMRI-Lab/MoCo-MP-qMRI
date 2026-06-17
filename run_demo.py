@@ -1,10 +1,5 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 MoCo-MP-qMRI Reconstruction Script
-Author: Your Name
-Description:
-    This script performs motion-compensated quantitative MRI reconstruction.
 """
 
 import os
